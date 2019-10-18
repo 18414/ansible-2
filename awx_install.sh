@@ -37,15 +37,15 @@ yum install python-docker-py.noarch -y
 yum install git ansible -y
 yum install libselinux-python -y
 
-# OPTIONAL: install portainer container to manage docker
-docker volume create portainer_data
-docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
-
 cd /app/INSTALL_BINARIES
 git clone https://github.com/ansible/awx
 
 pip install docker-compose
 pip uninstall -y docker docker-py && pip install docker~=3.7.2
+
+# OPTIONAL: install portainer container to manage docker
+docker volume create portainer_data
+docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 
 echo "##################################################################################################"
 echo "Review and change some of the below parameters in '/app/INSTALL_BINARIES/awx/installer/inventory'"
