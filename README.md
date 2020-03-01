@@ -1,1 +1,1 @@
-# ansible
+# ansible AWX installation script
